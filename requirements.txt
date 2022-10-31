@@ -1,0 +1,4 @@
+pygame~=2.1.2
+numpy~=1.21.4
+pymongo~=4.0.1
+mediapipe~=0.8.10
