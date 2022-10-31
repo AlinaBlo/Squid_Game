@@ -117,7 +117,7 @@ class game():
                 pre_game_countdown(self)
 
             if self.game_time.total_Game_Time - time.time() <= 0:
-                game_over_second(self, coins)
+                game_over(self.img, coins.coins_collected)
 
             show_game(self, full_screen)
 
@@ -269,14 +269,7 @@ class Cookie():
         self.cookie = cookie
         self.coin = coin
 
-def game_over_second(game,coins):
-    pygame.mixer.music.load('sounds/Game Over.wav')
-    pygame.mixer.music.play()
-    cv2.rectangle(game.img, (350, 200), (1000, 550), (222, 224, 222), -1)
-    cv2.putText(game.img, "GAME OVER !", (350, 300), cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 0, 255), 3)
-    cv2.putText(game.img, f'Score: {str(coins.coins_collected)}', (600, 500), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 3)
-    cv2.putText(game.img, 'Please press ESC to exit the game', (350, 400), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 3)
-    game.Game_is_running = False
+
 
 def background_music(game):
     if game.Game_is_running:
@@ -560,9 +553,9 @@ def move_music(doll):
 
 def game_over_win_lose(img,doll):
     if doll.health_Bar_points > 25:
-        cv2.putText(img, 'You Win !!!', (500, 400), cv2.FONT_HERSHEY_SIMPLEX, 2, (50, 205, 50), 3)
+        cv2.putText(img, 'You Win !!!', (500, 430), cv2.FONT_HERSHEY_SIMPLEX, 2, (50, 205, 50), 3)
     else:
-        cv2.putText(img, 'You Lose ! ', (500, 400), cv2.FONT_HERSHEY_SIMPLEX, 2, (165, 42, 42), 3)
+        cv2.putText(img, 'You Lose ! ', (500, 430), cv2.FONT_HERSHEY_SIMPLEX, 2, (165, 42, 42), 3)
 
 ####################################################################
 # basic functions for all the games
@@ -668,11 +661,11 @@ def game_over(img, points):
     pygame.mixer.music.load('sounds/Game Over.wav')
     pygame.mixer.music.play()
     cv2.rectangle(img, (350, 200), (1000, 550), (222, 224, 222), -1)
-
     cv2.putText(img, "GAME OVER !", (350, 300), cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 0, 255), 3)
     cv2.putText(img, f'Score: {str(points)}', (600, 500), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 3)
-
+    cv2.putText(game.img, 'Please press ESC to exit the game', (360, 375), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 3)#400
     game.Game_is_running = False
+
 
 camera = Camera()
 game = game()

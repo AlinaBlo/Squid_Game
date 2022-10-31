@@ -37,7 +37,7 @@ class Camera:
         return landmarks, img
 
     # Returns the Frame Array
-    def Lendmarks_To_Array(self,landmarks, Frame_Array):
+    def Landmarks_To_Array(self,landmarks, Frame_Array):
         if len(landmarks) != CF.empty:
             Frame_Array.append(landmarks)
         return Frame_Array
